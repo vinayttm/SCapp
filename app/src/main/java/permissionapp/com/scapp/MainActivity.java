@@ -20,6 +20,7 @@ import java.nio.ByteBuffer;
 import permissionapp.com.scapp.Services.ScreenCaptureService;
 import permissionapp.com.scapp.Utils.AutoWorker;
 import permissionapp.com.scapp.Utils.Config;
+import permissionapp.com.scapp.Utils.TextRecognizerUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -120,12 +121,17 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Screen Shot Image Path ", "Main Screenshot saved to: " + fileScreenshot.getAbsolutePath());
                 FileOutputStream fileOutputStream = new FileOutputStream(fileScreenshot);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream);
+            TextRecognizerUtil.processBitmapImage(bitmap);
             fileOutputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+
+
+
+
 
 
 }
